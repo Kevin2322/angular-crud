@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5 mb-3">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="container mb-3">
+        <form>
+            <!-- <label for="name" >Id</label>
+            <input type="number" name="id" [(ngModel)]="id"> -->
+            <table class="table">
+                <thead class="table-primary">
+                    <tr>
+                        <th><label for="name" >Name</label></th>
+                        <th><label for="age">Age</label></th>
+                        <th><label for="mobileno">Mobile No</label></th>
+                        <th><label for="btn">Action</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input class="form-control" type="text" name="name" [(ngModel)]="name"></td>
+                        <td><input class="form-control" type="number" name="age" [(ngModel)]="age"> </td>
+                        <td><input class="form-control" type="number" name="mobileno" [(ngModel)]="mobileno"> </td>
+                        <td>
+                            <ng-container>
+                                <input class="btn btn-success"  type="submit" [value]=" !isEdit ? 'submit' : 'update' " (click)=" !isEdit ? submit() : finalupdate()">
+                            </ng-container>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          <!-- <label for="name">operations</label> -->
+        </form>
+        <table class="table" *ngIf="EmployeeList.length > 0">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    Mobile
+                </th>
+                <th>
+                    operations
+                </th>
+            </tr>
+            <tr *ngFor="let employee of EmployeeList;let i=index" >
+                <td>{{i + 1}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.age}}</td>
+                <td>{{employee.mobileno}}</td>
+                <td>
+                    <input class="btn btn-warning me-2" type="submit" value="update" (click)="update(employee)">
+                    <input class="btn btn-danger" type="submit" value="delete" (click)="delete(employee)">
+                </td>
+        
+            </tr>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
